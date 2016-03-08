@@ -8,7 +8,7 @@ def findcross(one_line, second_line):
     x1, y1, x2, y2 = one_line[0][0], one_line[0][1], one_line[1][0], one_line[1][1]
     x3, y3, x4, y4 = second_line[0][0], second_line[0][1], second_line[1][0], second_line[1][1]
     p1, p2, p3, p4 = symg.Point(x1, y1), symg.Point(x2, y2), symg.Point(x3, y3), symg.Point(x4, y4)
-    l1, l2 = symg.Line(p1, p2), symg.Line(p3, p4)
+    l1, l2 = symg.Segment(p1, p2), symg.Segment(p3, p4)
     pointxy = symg.intersection(l1, l2)
     if pointxy != []:
         pointxy = [round(pointxy[0].x, 4), round(pointxy[0].y, 4)]

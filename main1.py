@@ -4,10 +4,7 @@ import graphic1  # 32 строка
 import find_cross_line as fcr
 from random import randint as rand
 
-# import array
-
 # start_n = int(input("начальное число вершин от 5 до 10:"))
-# start_n = rand(5, 10)
 start_n = 8
 if start_n < 5:
     start_n = 5
@@ -16,15 +13,12 @@ if start_n > 10:
 print("начальное число вершин", start_n)
 
 start_m = 20
-# start_m = rand(5, 6)
 # start_m = int(input("число итераций от 5 до 20:"))
 print("число итераций", start_m)
 
 pointsall = []  # объявляю пустой список
 
 for i in range(start_n):  # создание списка координат вершин многогранника
-    #  pointsx = pointsx + [round(math.sin(2 * math.pi * i / start_n), 3)]
-    #  pointsy = pointsy + [round(math.cos(2 * math.pi * i / start_n), 3)]
     pointsall = pointsall + \
                 [[round(math.sin(2 * math.pi * i / start_n), 4), round(math.cos(2 * math.pi * i / start_n), 4)]]
 
@@ -69,7 +63,7 @@ def finde_all_cross(linesall_f):
     """разобраться с range(start_n, len(linesall_f) - 2) - чтобы работал без ошибок"""
     for k in range(start_n, len(linesall_f) - 2):  #перебор по очереди всех линий с эн и без 2 последних пересечения нет
         add_cross = [fcr.findcross(next_line_f, [linesall_f[k], linesall_f[k + 1]])]
-        if add_cross != []:
+        if add_cross != [[]]:
             point_cross_f = point_cross_f + add_cross
     return point_cross_f
 
@@ -78,19 +72,19 @@ def finde_all_cross(linesall_f):
 
 for j in range(start_m - 2):
     next_point = fcr.chose_poit(point_index, pointsall, linesall)
-    # print("следующая точка", next_point)
+    print("следующая точка", next_point)
     point_index = pointsall.index(next_point)
-    # print("индекс", point_index)
+    print("индекс", point_index)
     linesall = linesall + [next_point]
-    # print("все линии", linesall)
+    print("все линии", linesall)
     point_cross = finde_all_cross(linesall)
-    # print("cross:", point_cross)
+    print("cross:", point_cross)
 
     for j in range(len(point_cross)):
         check = 0
         if pointsall.count(point_cross[j]) == 0:
             pointsall = pointsall + [point_cross[j]]
-    # print("все точки", pointsall)
+    print("все точки", pointsall)
 
 print("все линии", linesall)
 pointsx = []
